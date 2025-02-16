@@ -1,0 +1,55 @@
+/* CSS Document for better rating plugin */
+
+.better-rating {}
+.better-rating li{
+    display: inline-block;
+    margin: 10px 0;
+}
+.better-rating .profile-pic{
+    display: inline-block;
+}
+.better-rating .content{
+    display: inline-block;
+    max-width: 68%;
+    vertical-align: top;
+    background: #f7f7f7;
+    padding: 20px;
+}
+.profile-rating-wrapper {
+    display: inline-block;
+    text-align: center;
+}
+.better-rating.slider {}
+
+#better-rating-form {}
+#better-rating-form input, #better-rating-form textarea{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 3px;
+    border: 1px solid #dee2e6;
+}
+
+#better-rating-form button {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 3px;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    float: right;
+}
+.rating i{
+    cursor: pointer;
+    color: #dee2e6;
+        transition: all ease 0.2s;
+
+ }
+ .selected {
+    color: #f8b52f !important;
+ }
+ .hover {
+    color: #f8b52f !important; 
+ }
+.rating i:hover{
+    color: #f8b52f;
+}
