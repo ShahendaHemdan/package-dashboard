@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-5">Add Course</h4>
-                        <form class="forms-sample" method="post" enctype="multipart/form-data" action="{{ route('courses.store') }}">
+                        <form class="forms-sample" id="mceForm" method="post" enctype="multipart/form-data" action="{{ route('courses.store') }}">
                             @csrf
                             <div class="form-group">
                                 <label>Image:</label>
@@ -68,4 +68,5 @@
 </div>
 
 
+  
 @endsection

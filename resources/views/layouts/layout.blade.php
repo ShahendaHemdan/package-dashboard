@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>ARS MEDICA</title>
+    <title>Admin-panel</title>
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}" />
@@ -179,23 +179,66 @@
             </div>
         </div>
     </div>
+<!-- External Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- TinyMCE -->
+<script src="https://cdn.tiny.cloud/1/y80445dudhr7pkic7gnk0suth5ojsqvrdq8mw5uiubpbfdv6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
-      document.getElementById('image').addEventListener('change', function() {
+    // Initialize TinyMCE
+    tinymce.init({
+        selector: 'textarea, #description',
+        plugins: 'advlist autolink lists link image charmap preview anchor table code',
+        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
+        height: 300,
+        setup: function (editor) {
+            // Sync TinyMCE content back to the textarea before form submission
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+
+    // Add form submit event listener
+    document.getElementById('mceForm').addEventListener('submit', function (e) {
+        // Ensure TinyMCE syncs its content to the textarea
+        tinymce.triggerSave();
+    });
+</script>
+<!-- Vendor Scripts -->
+<script src="{{asset('assets/vendors/js/vendor.bundle.base.js')}}"></script>
+<script src="{{asset('assets/vendors/chart.js/Chart.min.js')}}"></script>
+<script src="{{asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('assets/vendors/flot/jquery.flot.js')}}"></script>
+<script src="{{asset('assets/vendors/flot/jquery.flot.resize.js')}}"></script>
+<script src="{{asset('assets/vendors/flot/jquery.flot.categories.js')}}"></script>
+<script src="{{asset('assets/vendors/flot/jquery.flot.fillbetween.js')}}"></script>
+<script src="{{asset('assets/vendors/flot/jquery.flot.stack.js')}}"></script>
+<script src="{{asset('assets/vendors/flot/jquery.flot.pie.js')}}"></script>
+<!-- Custom Application Scripts -->
+<script src="{{asset('assets/js/off-canvas.js')}}"></script>
+<script src="{{asset('assets/js/hoverable-collapse.js')}}"></script>
+<script src="{{asset('assets/js/misc.js')}}"></script>
+<script src="{{asset('assets/js/dashboard.js')}}"></script>
+
+<script>
+        document.getElementById('image').addEventListener('change', function() {
         const fileName = this.files[0] ? this.files[0].name : 'Upload Image';
         document.getElementById('fileInfo').value = fileName;
-      });
+        });
 
-      document.getElementById('pdf').addEventListener('change', function() {
+        document.getElementById('pdf').addEventListener('change', function() {
         const fileName = this.files[0] ? this.files[0].name : 'Upload Pdf';
         document.getElementById('fileInfoPdf').value = fileName;
-      });
+        });
 
-  document.getElementById('video').addEventListener('change', function() {
+    document.getElementById('video').addEventListener('change', function() {
     const fileName = this.files[0] ? this.files[0].name : 'Upload Video';
     document.getElementById('fileInfoVideo').value = fileName;
-  });
+    });
 
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const pdfInput = document.getElementById('pdf');
         const fileInfoPdf = document.getElementById('fileInfoPdf2');
 
@@ -250,35 +293,8 @@
         alert('Please upload a valid video file.');
     }
 
-  }
+    }
 </script>
-<script src="https://cdn.tiny.cloud/1/y80445dudhr7pkic7gnk0suth5ojsqvrdq8mw5uiubpbfdv6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        // Initialize TinyMCE for the 'answer' and 'notes' fields
-        tinymce.init({
-            selector: 'textarea ,#description',
-            plugins: 'advlist autolink lists link image charmap preview anchor table code',
-            toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code',
-            height: 300,
-            
-        });
-    </script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.0.19/sweetalert2.all.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
- <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
- <script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
- <script src="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
- <script src="{{ asset('assets/vendors/flot/jquery.flot.js') }}"></script>
- <script src="{{ asset('assets/vendors/flot/jquery.flot.resize.js') }}"></script>
- <script src="{{ asset('assets/vendors/flot/jquery.flot.categories.js') }}"></script>
- <script src="{{ asset('assets/vendors/flot/jquery.flot.fillbetween.js') }}"></script>
- <script src="{{ asset('assets/vendors/flot/jquery.flot.stack.js') }}"></script>
- <script src="{{ asset('assets/vendors/flot/jquery.flot.pie.js') }}"></script>
- <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
- <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
- <script src="{{ asset('assets/js/misc.js') }}"></script>
- <script src="{{ asset('assets/js/dashboard.js') }}"></script>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 </body>
-</html>
+</html> 

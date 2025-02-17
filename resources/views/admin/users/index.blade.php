@@ -3,7 +3,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Students</h4>
+        <h4 class="card-title">Users</h4>
             <a href="{{route('users.create')}}" class="btn btn-primary mt-4 mb-4">Add New</a>
         
 
